@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
-import logo from "../assets/logo.png";
+import logoFallback from "../assets/logo.png";
+
+const PUBLIC_LOGO_PATH = "/logo.png";
+
+function handleLogoError(event) {
+  const image = event.currentTarget;
+
+  if (image.dataset.fallbackApplied === "true") {
+    return;
+  }
+
+  image.dataset.fallbackApplied = "true";
+  image.src = logoFallback;
+}
 
 export default function Header() {
   const location = useLocation();
@@ -48,7 +61,11 @@ export default function Header() {
 
         <div className={styles.logo}>
           <Link to="/" aria-label="Chituku Deluxe Cafe home">
-            <img src={logo} alt="Chituku Deluxe Cafe" />
+            <img
+              src={PUBLIC_LOGO_PATH}
+              alt="Chituku Deluxe Cafe"
+              onError={handleLogoError}
+            />
           </Link>
         </div>
 
