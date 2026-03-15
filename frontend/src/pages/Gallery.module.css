@@ -1,0 +1,133 @@
+.galleryPage {
+  --display-font:
+    "Baskerville Old Face", "Iowan Old Style", "Palatino Linotype",
+    "Book Antiqua", Baskerville, Georgia, serif;
+  --text-font: "Aptos", "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+  min-height: 100vh;
+  padding: 36px 0 92px;
+  background:
+    radial-gradient(circle at top left, rgba(250, 204, 21, 0.12) 0%, rgba(250, 204, 21, 0) 20%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.12) 0%, rgba(96, 165, 250, 0) 22%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.hero {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 30px;
+  padding: 34px 36px;
+  border-radius: 28px;
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--text-font);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8b5e0a;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-family: var(--display-font);
+  font-size: clamp(2.7rem, 5vw, 4.3rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: #111827;
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 0;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  line-height: 1.66;
+  color: #475569;
+}
+
+.masonry {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  columns: 3 260px;
+  column-gap: 20px;
+}
+
+.tile {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.photoButton {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #0f172a;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.16);
+}
+
+.frame img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 16px 18px 18px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.02) 0%,
+      rgba(15, 23, 42, 0.16) 44%,
+      rgba(15, 23, 42, 0.8) 100%
+    );
+  color: #fff;
+}
+
+.caption h2 {
+  margin: 0 0 6px;
+  font-family: var(--display-font);
+  font-size: 1.5rem;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.caption p {
+  margin: 0;
+  font-family: var(--text-font);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(226, 232, 240, 0.84);
+}
+
+@media (max-width: 680px) {
+  .galleryPage {
+    padding: 24px 0 72px;
+  }
+
+  .hero,
+  .masonry {
+    width: min(1120px, calc(100% - 20px));
+  }
+
+  .hero {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+}
+

@@ -1,0 +1,451 @@
+.header {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  position: relative;
+  isolation: isolate;
+}
+
+.homeHeader {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+  animation: homeHeaderEnter 820ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+}
+
+.homeHeader::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 100vw;
+  height: 180px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 19, 0.82) 0%,
+    rgba(8, 12, 19, 0.5) 52%,
+    rgba(8, 12, 19, 0) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+  animation: homeHeaderScrimReveal 900ms ease-out both;
+}
+
+.menuToggle {
+  display: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: none;
+  backdrop-filter: none;
+  align-items: flex-start;
+  position: relative;
+}
+
+.menuToggle span {
+  display: block;
+  position: absolute;
+  right: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: #f8fafc;
+  transform-origin: center;
+  transition: transform 180ms ease, opacity 180ms ease, width 180ms ease;
+}
+
+.menuToggle span:nth-child(1) {
+  width: 26px;
+  top: 7px;
+}
+
+.menuToggle span:nth-child(2) {
+  width: 18px;
+  top: 15px;
+}
+
+.menuToggle span:nth-child(3) {
+  width: 12px;
+  top: 23px;
+}
+
+.menuToggleOpen span:nth-child(1) {
+  width: 24px;
+  top: 15px;
+  transform: rotate(45deg);
+}
+
+.menuToggleOpen span:nth-child(2) {
+  width: 24px;
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menuToggleOpen span:nth-child(3) {
+  width: 24px;
+  top: 15px;
+  transform: rotate(-45deg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: clamp(100px, 10vw, 132px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.38));
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+}
+
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 10px 0;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.nav a:hover::after,
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.homeHeader .nav a {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.homeHeader .nav a:hover,
+.homeHeader .nav a[aria-current="page"] {
+  color: #facc15;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: #9a6700;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111827;
+  border: 1px solid #d4a407;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.22);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.contact a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(245, 158, 11, 0.28);
+  background: linear-gradient(135deg, #fde047 0%, #f59e0b 100%);
+}
+
+.contact a:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.2);
+}
+
+.homeHeader .contact a {
+  box-shadow: 0 16px 28px rgba(8, 12, 19, 0.28);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 19, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, visibility 180ms ease;
+  z-index: 28;
+}
+
+.mobileOverlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobilePanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(320px, 84vw);
+  height: 100svh;
+  padding: 28px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: linear-gradient(180deg, #161519 0%, #111827 100%);
+  box-shadow: 18px 0 42px rgba(8, 12, 19, 0.34);
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  z-index: 30;
+}
+
+.mobilePanelOpen {
+  transform: translateX(0);
+}
+
+@keyframes homeHeaderEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-28px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes homeHeaderScrimReveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.mobilePanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mobilePanelHeader p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mobileClose {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.mobileClose span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.mobileClose span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mobileClose span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobileNav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.mobileNav a:hover,
+.mobileNav a[aria-current="page"] {
+  color: #111827;
+  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+  transform: translateX(4px);
+}
+
+.mobileContact {
+  margin-top: auto;
+}
+
+.mobileContact a {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111827;
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+  box-shadow: 0 16px 30px rgba(245, 158, 11, 0.22);
+}
+
+@media (max-width: 900px) {
+  .header {
+    width: min(1180px, calc(100% - 32px));
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: max(18px, env(safe-area-inset-top));
+  }
+
+  .menuToggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .logo {
+    order: 1;
+    margin-left: 0;
+  }
+
+  .logo img {
+    width: 88px;
+  }
+
+  .nav,
+  .contact {
+    display: none;
+  }
+
+  .homeHeader::before {
+    height: 150px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .header {
+    width: min(1180px, calc(100% - 56px));
+    padding-top: 24px;
+  }
+
+  .menuToggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menuToggle span {
+    height: 4px;
+  }
+
+  .menuToggle span:nth-child(1) {
+    width: 30px;
+    top: 6px;
+  }
+
+  .menuToggle span:nth-child(2) {
+    width: 22px;
+    top: 16px;
+  }
+
+  .menuToggle span:nth-child(3) {
+    width: 14px;
+    top: 26px;
+  }
+
+  .menuToggleOpen span:nth-child(1),
+  .menuToggleOpen span:nth-child(3) {
+    width: 28px;
+    top: 16px;
+  }
+
+  .logo img {
+    width: 104px;
+  }
+
+  .homeHeader::before {
+    height: 180px;
+  }
+
+  .mobilePanel {
+    width: min(360px, 72vw);
+    padding: 34px 28px 28px;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobileOverlay,
+  .mobilePanel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeHeader,
+  .homeHeader::before {
+    animation: none !important;
+  }
+}

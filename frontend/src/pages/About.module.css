@@ -1,0 +1,67 @@
+.aboutPage {
+  min-height: 100vh;
+  padding: 36px 0 92px;
+  background:
+    radial-gradient(circle at top left, rgba(250, 204, 21, 0.12) 0%, rgba(250, 204, 21, 0) 20%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.12) 0%, rgba(96, 165, 250, 0) 22%),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.hero {
+  --display-font:
+    "Baskerville Old Face", "Iowan Old Style", "Palatino Linotype",
+    "Book Antiqua", Baskerville, Georgia, serif;
+  --text-font: "Aptos", "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 30px;
+  padding: 36px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #f8fafc;
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.14);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--text-font);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #facc15;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-family: var(--display-font);
+  font-size: clamp(2.8rem, 5vw, 4.3rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  line-height: 1.66;
+  color: rgba(226, 232, 240, 0.88);
+}
+
+@media (max-width: 680px) {
+  .aboutPage {
+    padding: 24px 0 72px;
+  }
+
+  .hero {
+    width: min(1120px, calc(100% - 20px));
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
